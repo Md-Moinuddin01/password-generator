@@ -1,4 +1,5 @@
 # Password Generator
+<img width="1902" height="954" alt="pass gen" src="https://github.com/user-attachments/assets/797f5da7-89a5-44d8-9042-c8f3ddbf3e81" />
 
 A local black-and-white brutal-style password generator built with HTML, CSS, and JavaScript.
 
