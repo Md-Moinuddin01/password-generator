@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A strong password generator with a brutal black and white interface."
+    />
+    <title>Password Generator</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <canvas id="motionField" aria-hidden="true"></canvas>
+
+    <div class="page-shell">
+      <header class="site-header" aria-label="Site header">
+        <a class="brand-mark" href="#generator" aria-label="Password Generator home">
+          <span class="brand-box">PG</span>
+          <span>PASS GENERATOR</span>
+        </a>
+        <div class="status-strip" aria-label="Generator status">
+          <span>LOCAL</span>
+          <span>CRYPTO</span>
+          <span>NO LOGS</span>
+        </div>
+      </header>
+
+      <main>
+        <section class="hero-band" aria-labelledby="pageTitle">
+          <div class="headline-block">
+            <p class="eyebrow">BRUTAL PASSWORD FORGE</p>
+            <h1 id="pageTitle">Password Generator</h1>
+            <p class="tagline">Generate strong passwords.</p>
+          </div>
+
+          <div class="lock-stage" aria-hidden="true">
+            <img src="assets/brutal-lock.svg" alt="" />
+          </div>
+        </section>
+
+        <section class="app-grid" id="generator" aria-label="Password generator">
+          <article class="output-panel">
+            <div class="panel-topline">
+              <span class="panel-label">OUTPUT</span>
+              <span class="live-badge" id="strengthBadge">READY</span>
+            </div>
+
+            <div class="password-box">
+              <output
+                class="password-output"
+                id="passwordOutput"
+                aria-live="polite"
+              ></output>
+              <div class="password-actions">
+                <button class="button button-dark" id="copyButton" type="button">
+                  COPY
+                </button>
+                <button class="button button-light" id="generateButton" type="button">
+                  GENERATE
+                </button>
+              </div>
+            </div>
+
+            <div class="strength-meter" aria-label="Password strength">
+              <div class="meter-track">
+                <span class="meter-fill" id="meterFill"></span>
+              </div>
+              <div class="meter-copy">
+                <span id="strengthLabel">Strong</span>
+                <span id="entropyLabel">0 bits</span>
+              </div>
+            </div>
+
+            <div class="stats-grid" aria-label="Password statistics">
+              <div>
+                <span class="stat-value" id="lengthStat">24</span>
+                <span class="stat-label">LENGTH</span>
+              </div>
+              <div>
+                <span class="stat-value" id="poolStat">0</span>
+                <span class="stat-label">POOL</span>
+              </div>
+              <div>
+                <span class="stat-value" id="typeStat">0</span>
+                <span class="stat-label">TYPES</span>
+              </div>
+            </div>
+
+            <div class="recent-panel" aria-label="Recent passwords for this session">
+              <div class="recent-heading">
+                <span>SESSION STACK</span>
+                <button class="text-button" id="clearHistoryButton" type="button">
+                  CLEAR
+                </button>
+              </div>
+              <ul class="recent-list" id="recentList"></ul>
+            </div>
+          </article>
+
+          <aside class="controls-panel" aria-label="Password settings">
+            <div class="control-head">
+              <span class="panel-label">CONTROLS</span>
+              <button class="text-button" id="resetButton" type="button">RESET</button>
+            </div>
+
+            <div class="length-control">
+              <label for="lengthRange">
+                <span>Length</span>
+                <strong id="lengthValue">24</strong>
+              </label>
+              <input id="lengthRange" type="range" min="8" max="64" value="24" />
+              <input
+                id="lengthNumber"
+                class="length-number"
+                type="number"
+                min="8"
+                max="64"
+                value="24"
+                inputmode="numeric"
+                aria-label="Password length"
+              />
+            </div>
+
+            <div class="toggle-grid">
+              <label class="toggle-row">
+                <input type="checkbox" id="lowercaseToggle" checked />
+                <span>a-z</span>
+              </label>
+              <label class="toggle-row">
+                <input type="checkbox" id="uppercaseToggle" checked />
+                <span>A-Z</span>
+              </label>
+              <label class="toggle-row">
+                <input type="checkbox" id="numberToggle" checked />
+                <span>0-9</span>
+              </label>
+              <label class="toggle-row">
+                <input type="checkbox" id="symbolToggle" checked />
+                <span>!@#</span>
+              </label>
+              <label class="toggle-row wide">
+                <input type="checkbox" id="ambiguousToggle" checked />
+                <span>SKIP AMBIGUOUS</span>
+              </label>
+            </div>
+
+            <div class="pattern-board" aria-hidden="true">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </aside>
+        </section>
+      </main>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
